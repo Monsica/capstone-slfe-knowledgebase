@@ -13,7 +13,7 @@ const userSchema = new Schema({
 });
 
 //Middleware to hash password upon changing entry.
-userSchema.pre(save, function(next) 
+userSchema.pre('save', function(next) 
 {
   var user = this;
 
