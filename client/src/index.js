@@ -14,6 +14,7 @@ import store from './store';
 import Browse from './components/Pages/Browse';
 import DataTest from './components/Pages/DataTest';
 import addSolution from './components/Pages/addSolution';
+import dashboard from './components/Pages/dashboard';
 //import registerServiceWorker from './registerServiceWorker';
 
 render(
@@ -29,6 +30,7 @@ render(
         <Route path='/solution/add' component={addSolution} />
         <Route path='/solution/:id' component={solution} />
         <Route path='/test' component={DataTest}/>
+        <Route exact path="/dashboard" component={dashboard} />
       </Switch>
     </Provider>
   </BrowserRouter>,
