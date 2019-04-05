@@ -67,64 +67,58 @@ router.get('/q/:field/:value', (req, res)=>{
 })
 
 router.post('/', (req, res) => {
-  var Name = req.body.Name
-
   const newEnt = new Enterprise({
     Name: req.body.Name,
     "Responsible Organization": req.body.ResponsibleOrganization,
     "Short Description": req.body.ShortDescription,
+    "General Description": req.body.GeneralDescription,
+    "Solution Type": req.body.SolutionType,
     "Primary Domain": req.body.PrimaryDomain,
     "Seconday Domain": req.body.SecondayDomain,
-    "Solution Type": req.body.SolutionType,
+    "Organizational Entity Type": req.body.OrganizationalEntityType,
     "Keyword Descriptiors": req.body.KeywordDescriptors,
-    "Date Founded": req.body.DateFounded
+    Location: req.body.Location,
+    Country: req.body.Country,
+    State: req.body.State,
+    City: req.body.City,
+    "Scope of Activities": req.body.ScopeOfActivities,
+    "Operational Area": req.body.OperationalArea,
+    "Climate Zone": req.body.ClimateZone,
+    "City Type": req.body.CityType,
+    "Date Founded": req.body.DateFounded,
+    "Economic Networks": req.body.EconomicNetworks,
+    "Associations": req.body.Associations,
+    "Number of Employees": req.body.NumberOfEmployees,
+    References: req.body.References,
+    "Annual Revenue": req.body.AnnualRevenue,
+    "Number of Workers": req.body.NumberOfWorkers,
+    "Product Description": req.body.ProductDescription,
+    "Customers Description": req.body.CustomersDescription,
+    "Workforce Description": req.body.WorkforceDescription,
+    "Production Description": req.body.ProductionDescription,
+    "Sourcing Description": req.body.SourcingDescription,
+    "Supporting Services Description": req.body.SupportingServicesDescription,
+    "Other Outputs Description": req.body.OtherOutputsDescription,
+    "Distributing Description": req.body.DistributingDescription,
+    "Re-cycling Description": req.body.RecyclingDescription,
+    "Managing Description": req.body.ManagingDescription,
+    "Decision Making Description": req.body.DecisionMakingDescription,
+    "Steering Description": req.body.SteeringDescription,
+    "Ownership Description": req.body.OwnershipDescription,
+    "Business Model Description": req.body.BusinessModelDescription,
+    History: req.body.History,
+    Recognition: req.body.Recognition,
+    "Future Outlook": req.body.FutureOutlook,
+    Researcher: req.body.Researcher,
+    "Last Updated": req.body.LastUpdated,
+    Lattitude: "",
+    Longitude: "",
+    mainImage: "",
+    otherImages: [],
+    isFeatured: false
   })
 
   newEnt.save().then(enterprise => res.json(enterprise));
 })
-
-// router.post('/', (req, res) => {
-//   const newEnt = new Enterprise({
-//     ID: req.body.id,
-//     Name: req.body.Name,
-//     Organization: req.body.Organization,
-//     Basic_Description_: req.body.Basic_Description_,
-//     Solution_Type: req.body.Solution_Type,
-//     Primary_Domain: req.body.Primary_Domain,
-//     Secondary_Domain: req.body.Secondary_Domain,
-//     Legal_entity: req.body.Legal_entity,
-//     Keyword_discriptors: req.body.Keyword_discriptors,
-//     Location: req.body.Location,
-//     Scope_of_Activities: req.body.Scope_of_Activities,
-//     Operational_Area: req.body.Operational_Area,
-//     Climate_Zone: req.body.Climate_Zone,
-//     City_type: req.body.City_type,
-//     Founded: req.body.Founded,
-//     Economic_network: req.body.Economic_network,
-//     Other_network: req.body.Other_network,
-//     Sources: req.body.Sources,
-//     "Product/Services": req.body['Product/Services'],
-//     Workforce: req.body.Workforce,
-//     Production_processes: req.body.Production_processes,
-//     Production_processes_discription: req.body.Production_processes_discription,
-//     External_supplies: req.body.External_supplies,
-//     Supporting_services: req.body.Supporting_services,
-//     "By-products": req.body['By-products'],
-//     Distributing: req.body.Distributing,
-//     "Re-cycling": req.body['Re-cycling'],
-//     Managing: req.body.Managing,
-//     Steering: req.body.Steering,
-//     Ownership: req.body.Ownership,
-//     Economics: req.body.Economics,
-//     History: req.body.History,
-//     Recognition: req.body.Recognition,
-//     Future_Outlook: req.body.Future_Outlook,
-//     Last_Updated: req.body.Last_Updated,
-//     Researcher: req.body.Researcher,
-//     Contact: req.body.Contact
-//   });
-
-//   newEnt.save().then(enterprise => res.json(enterprise));
-// });
 
 module.exports = router;

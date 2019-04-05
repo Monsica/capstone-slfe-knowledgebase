@@ -1,6 +1,7 @@
 import axios from 'axios';
-import {GET_USER_UPDATE_PASSWORD, GET_USER_SESSION, GET_USER_REGISTER, RESPONSE_LOADING} from './types';
+import {GET_USER_UPDATE_PASSWORD, ADD_USER, GET_USER_SESSION, GET_USER_REGISTER, RESPONSE_LOADING} from './types';
 
+/* n is not defined ... removing for now
 export const getUserSession = (username, password) => dispatch => {  //add integration for query here
   dispatch(setResponseLoading());
   return axios
@@ -11,6 +12,14 @@ export const getUserSession = (username, password) => dispatch => {  //add integ
       payload: res.data
     })
   )
+};
+*/
+export const addUserFunc = (user) => dispatch => {
+  dispatch(setResponseLoading());
+  return axios.post('/api/users/newUserRequest', user).then(res => dispatch({
+    type: ADD_USER,
+    payload: res.data
+  }))
 };
 
 export const setResponseLoading = () => {

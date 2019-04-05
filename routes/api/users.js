@@ -1,17 +1,20 @@
 const express = require('express');
+var cookieParser = require('cookie-parser');
 const router = express.Router();
+
+router.use(cookieParser());
 
 //User Model
 const User = require('../../models/user');
 
-router.post('/loginRequest', (req, res) => 
+router.post('/loginRequest', (req, res) =>
 {
   // user login data from post request
   let usersName = req.body.username;
   let usersPassword = req.body.password;
 
   // Search database for username
-  User.find({ username: usersName }, function(err, user) 
+  User.find({ username: usersName }, function(err, user)
   {
     if(err)
     {
@@ -24,6 +27,10 @@ router.post('/loginRequest', (req, res) =>
       if(true == isMatch)
       {
         res.json({success: true, message: ''})
+        //create and set cookie
+        res.cookie("userData", {username: user.username, role: user.role});
+        res.send('user data added to cookie');
+        res.send(req.cookies);
       }
       else
       {
@@ -32,25 +39,13 @@ router.post('/loginRequest', (req, res) =>
     });
 
   });
-    
 });
 
-router.post('/newUserRequest', (req, res) =>
-{
-  // user info from request.
-  const newUser = new User({
-    username: req.body.usersName,
-    password: req.body.usersPassword
-  });
 
-  // verify username is unique.
-  
+router.post('/newUserRequest', (req, res) => {
+	let new_user = new User(req.body);
 
-  // add new user.
-  newUser.save();
-  res.json({success: true, message: 'New User Added.'});
-})
-
-
+	new_user.save().then(user => res.json(user));
+});
 
 module.exports = router;
