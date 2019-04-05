@@ -67,7 +67,7 @@ class RegisterForm extends Component
 	render() {
 		return(
 			<div id="register_form" className="form_input">
-				<div className="signup-form">	
+				<div className="signup-form">
 					<form onSubmit={this.onSubmit}>
 						<h2>Register</h2>
 						<p className="lead">Please fill out this form to create your account.</p>
@@ -76,12 +76,13 @@ class RegisterForm extends Component
 								<span className="input-group-addon">
 									<i className="fa fa-user"/>
 								</span>
-								<input 
-									type="text" 
-									className="form-control" 
-									name="firstname" 
-									placeholder="First Name" 
+								<input
+									type="text"
+									className="form-control"
+									name="firstname"
+									placeholder="First Name"
 									required="required"
+									onChange={this.onChangeFirstName}
 								/>
 							</div>
 						</div>
@@ -90,12 +91,13 @@ class RegisterForm extends Component
 								<span className="input-group-addon">
 									<i className="fa fa-user"/>
 								</span>
-								<input 
-									type="text" 
-									className="form-control" 
-									name="lastname" 
-									placeholder="Last Name" 
+								<input
+									type="text"
+									className="form-control"
+									name="lastname"
+									placeholder="Last Name"
 									required="required"
+									onChange={this.onChangeLastName}
 								/>
 							</div>
 						</div>
@@ -104,12 +106,13 @@ class RegisterForm extends Component
 								<span className="input-group-addon">
 									<i className="fa fa-user"/>
 								</span>
-								<input 
-									type="text" 
-									className="form-control" 
-									name="username" 
-									placeholder="Username" 
+								<input
+									type="text"
+									className="form-control"
+									name="user_name"
+									placeholder="Username"
 									required="required"
+									onChange={this.onChangeUserName}
 								/>
 							</div>
 						</div>
@@ -118,12 +121,13 @@ class RegisterForm extends Component
 								<span className="input-group-addon">
 									<i className="fa fa-paper-plane"/>
 								</span>
-								<input 
-									type="email" 
-									className="form-control" 
-									name="email" 
-									placeholder="Email Address" 
+								<input
+									type="email"
+									className="form-control"
+									name="email_address"
+									placeholder="Email Address"
 									required="required"
+									onChange={this.onChangeEmailAddress}
 								/>
 							</div>
 						</div>
@@ -132,12 +136,13 @@ class RegisterForm extends Component
 								<span className="input-group-addon">
 									<i className="fa fa-lock"/>
 								</span>
-								<input 
-									type="password" 
-									className="form-control" 
-									name="password" 
-									placeholder="Password" 
+								<input
+									type="password"
+									className="form-control"
+									name="password"
+									placeholder="Password"
 									required="required"
+									onChange={this.onChangePassword}
 								/>
 							</div>
 						</div>
@@ -147,18 +152,18 @@ class RegisterForm extends Component
 									<i className="fa fa-lock"/>
 									<i className="fa fa-check"/>
 								</span>
-								<input 
-									type="password" 
-									className="form-control" 
-									name="confirm_password" 
-									placeholder="Confirm Password" 
+								<input
+									type="password"
+									className="form-control"
+									name="confirm_password"
+									placeholder="Confirm Password"
 									required="required"
 								/>
 							</div>
-						</div>        
+						</div>
 						<div className="form-group">
-							<button 
-								type="submit" 
+							<button
+								type="submit"
 								className="btn btn-primary btn-block btn-lg">
 									Register
 							</button>
@@ -172,7 +177,7 @@ class RegisterForm extends Component
 						Already have an account? <a href="/login">Login here</a>.
 					</div>
 				</div>
-			</div>	
+			</div>
 		);
 	}
 }
