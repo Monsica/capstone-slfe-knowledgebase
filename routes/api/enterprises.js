@@ -66,6 +66,37 @@ router.get('/q/:field/:value', (req, res)=>{
     .then(result => res.json(result))
 })
 
+router.get('/update_aws_link', (req, res) => {
+  // Enterprise.find({"mainImage": { $regex: ".*aws.*"}}, { "mainImage": 1 }).
+  Enterprise.find().
+  then(function (result) {
+    final = [];
+
+    for (let i = 0; i < result.length; i++) {
+      // result[i].fixedImage = "";
+      if (result[i].mainImage.includes("aws")) {
+        result[i].mainImage = result[i].mainImage.replace("https://s3-us-west-1.amazonaws.com/slfe-image-storage", "https://s3-us-west-1.amazonaws.com/slfe-knowledgebase")
+
+        final.push(result[i])
+      } 
+      
+      if (result[i].otherImages.length > 0) {
+        for (let j = 0; j < result[i].otherImages.length; j++) {
+          if (result[i].otherImages[j].img.includes("aws")) {
+            result[i].otherImages[j].img = result[i].otherImages[j].img.replace("https://s3-us-west-1.amazonaws.com/slfe-image-storage", "https://s3-us-west-1.amazonaws.com/slfe-knowledgebase")
+
+            final.push(result[i]);
+            break;
+          }
+        }
+      }
+
+      // result[i].save();
+    }
+    res.json(final);
+  })
+});
+
 router.post('/', (req, res) => {
   const newEnt = new Enterprise({
     Name: req.body.Name,
@@ -114,7 +145,7 @@ router.post('/', (req, res) => {
     Lattitude: "",
     Longitude: "",
     mainImage: "",
-    otherImages: [],
+    otherImages: req.body.otherImages,
     isFeatured: false
   })
 

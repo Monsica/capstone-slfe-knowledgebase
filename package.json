@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/panza8484/capstone-slfe-knowledgebase#readme",
   "dependencies": {
+    "aws-sdk": "^2.435.0",
     "bcrypt": "^3.0.4",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.3.1",
@@ -29,7 +30,9 @@
     "cookie-parser": "^1.4.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
-    "mongoose": "^5.2.12"
+    "mongoose": "^5.2.12",
+    "multer": "^1.4.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"

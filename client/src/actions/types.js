@@ -10,4 +10,7 @@ export const GET_CUSTOM = 'GET_CUSTOM';
 export const GET_USER_SESSION = 'GET_USER_SESSION';
 export const GET_USER_REGISTER = 'GET_USER_REGISTER';
 export const GET_USER_UPDATE_PASSWORD = 'GET_USER_UPDATE_PASSWORD';
+export const UPLOAD_FILE = 'UPLOAD_FILE'
+export const DELETE_FILE = 'DELETE_FILE'
 export const ADD_USER = 'ADD_USER';
+export const VERIFY_USER = 'VERIFY_USER';

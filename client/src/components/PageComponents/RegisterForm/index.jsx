@@ -170,7 +170,7 @@ class RegisterForm extends Component
 						</div>
 						<p className="small text-center">
 							By clicking the Register button, you agree to our
-							<a href="#"> Terms &amp; Conditions</a>, and <a href="#">Privacy Policy</a>.
+							<a href="terms_of_service"> Terms &amp; Conditions</a>, and <a href="privacy">Privacy Policy</a>.
 						</p>
 					</form>
 					<div className="text-center">

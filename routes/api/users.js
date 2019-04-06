@@ -9,12 +9,15 @@ const User = require('../../models/user');
 
 router.post('/loginRequest', (req, res) =>
 {
+  console.log("inside loginRequest router.post");
+
+
   // user login data from post request
-  let usersName = req.body.username;
+  let usersName = req.body.user_name;
   let usersPassword = req.body.password;
 
   // Search database for username
-  User.find({ username: usersName }, function(err, user)
+  User.findOne({ user_name: usersName }, function(err, user)
   {
     if(err)
     {
@@ -22,19 +25,21 @@ router.post('/loginRequest', (req, res) =>
       next();
     }
 
-    User.checkPassword(usersPassword, function(errr, isMatch)
+    user.checkPassword(usersPassword, function(errr, isMatch)
     {
       if(true == isMatch)
       {
         res.json({success: true, message: ''})
         //create and set cookie
-        res.cookie("userData", {username: user.username, role: user.role});
-        res.send('user data added to cookie');
-        res.send(req.cookies);
+        //res.cookie("userData", {user_name: user.user_name, role: user.role});
+        //res.send('user data added to cookie');
+        //res.send(req.cookies);
+        console.log("Data matches! Login successful.");
       }
       else
       {
         res.json({success: false, message: 'an error occured'})
+        console.log("ERROR on login at router.post");
       }
     });
 
@@ -44,7 +49,6 @@ router.post('/loginRequest', (req, res) =>
 
 router.post('/newUserRequest', (req, res) => {
 	let new_user = new User(req.body);
-
 	new_user.save().then(user => res.json(user));
 });
 

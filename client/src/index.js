@@ -4,6 +4,8 @@ import './styles/main.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import explore from './components/Pages/explore.jsx';
 import about from './components/Pages/about';
+import terms_of_service from './components/Pages/terms_of_service';
+import privacy from './components/Pages/privacy';
 import login from './components/Pages/login';
 import register from './components/Pages/register';
 import mapContainer from './components/Pages/mapContainer.jsx';
@@ -24,6 +26,8 @@ render(
         <Route path='/about' component={about} />
 				<Route path='/login' component={login} />
 				<Route path='/register' component={register} />
+        <Route path='/terms_of_service' component={terms_of_service} />
+        <Route path='/privacy' component={privacy} />
         <Route exact path='/' component={explore}/>
         <Route path='/map' component={mapContainer} />
         <Route path='/solution/add' component={addSolution} />

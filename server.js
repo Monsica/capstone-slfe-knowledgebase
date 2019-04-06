@@ -1,12 +1,15 @@
 const  express = require('express');
+const aws = require('aws-sdk');
 const  mongoose = require('mongoose');
 const  bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const path = require('path');
 const port = process.env.PORT || 5000;
+
 const enterprises = require('./routes/api/enterprises');
 const domains = require('./routes/api/domains');
 const users = require('./routes/api/users');
+const files = require('./routes/api/files');
 
 const app = express();
 
@@ -29,6 +32,15 @@ mongoose
 app.use('/api/enterprises', enterprises);
 app.use('/api/domains', domains);
 app.use('/api/users', users);
+app.use('/api/files', files);
+
+// AWS config
+aws.config.region = process.env.S3_BUCKET_REGION
+aws.config.accessKeyId = process.env.AWS_ACCESS_KEY_ID
+aws.config.secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
+
+app.locals.S3_BUCKET_NAME = process.env.S3_BUCKET_NAME
+app.locals.S3_BUCKET_REGION = process.env.S3_BUCKET_REGION
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));

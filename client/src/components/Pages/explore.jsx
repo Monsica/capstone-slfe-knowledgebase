@@ -233,9 +233,6 @@ class explore extends Component {
             <SectionTitle label="Featured Solutions" />
           </div>
           <br />
-          <div style={{ marginBottom: "20px" }}>
-            <Map width={"100%"} height={"500px"} />
-          </div>
           <div
             style={{
               width: "100%",
@@ -245,6 +242,9 @@ class explore extends Component {
             }}
           >
             {popularList}
+          </div>
+          <div style={{ marginBottom: "20px" }}>
+            <Map width={"100%"} height={"500px"} />
           </div>
         </span>
         <div style={{ width: "100%" }}>
